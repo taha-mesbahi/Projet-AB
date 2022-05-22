@@ -16,7 +16,7 @@
       </ImageView>
       <Text layoutX="167.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Professor!" />
       <Button fx:id="addmodifybutton" layoutX="565.0" layoutY="99.0" mnemonicParsing="false" onAction="#Interfaceprof2switchscene" text="Add/Modify Grades" />
-      <Button layoutX="590.0" layoutY="166.0" mnemonicParsing="false" text="Mark abscences" />
+      <Button fx:id="abscences" layoutX="590.0" layoutY="166.0" mnemonicParsing="false" onAction="#Interfaceprof4switchscene" onMouseClicked="#Interfaceprof4switchscene" text="Mark abscences" />
       <ImageView fitHeight="89.0" fitWidth="66.0" layoutX="52.0" layoutY="601.0" onMouseClicked="#Logout" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../IMAGES/Logout%20icon.png" />

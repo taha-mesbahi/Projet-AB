@@ -14,14 +14,26 @@ public class InterfaceProf1controller {
 	    private Button addmodifybutton;
 
 	  
+	  @FXML
+	    private Button infosetudiants;
+	  
+	  @FXML
+	    private Button abscences;
+	  
 	  
 	  public void  Interfaceprof2switchscene() throws IOException {
 			
-			Main signupscene = new Main();    //changer de scence 
-			signupscene.changeScene("InterfaceProfesseur2.fxml");
+			Main prof2 = new Main();    //changer de scence 
+			prof2.changeScene("InterfaceProfesseur2.fxml");
 		}
 	  
 	  
+	
+	  
+	  public void  Interfaceprof4switchscene() throws IOException {
+			
+			Main prof4 = new Main();    //changer de scence 
+			prof4.changeScene("InterfaceProfesseur4.fxml");}
 	  
 	  
 	  public void  Logout() throws IOException {
