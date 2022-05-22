@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
@@ -18,7 +19,16 @@ public class InterfaceProf1controller {
 			
 			Main signupscene = new Main();    //changer de scence 
 			signupscene.changeScene("InterfaceProfesseur2.fxml");
+		}
+	  
+	  
+	  
+	  
+	  public void  Logout() throws IOException {
+			
+			Main logout = new Main();
+			logout.changeScene("Login.fxml");
+
 			
 		}
-
 }
