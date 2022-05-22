@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InterfaceProf2controller">
+   <children>
+      <ImageView fitHeight="844.0" fitWidth="1315.0" layoutX="-17.0" layoutY="-121.0" pickOnBounds="true">
+         <image>
+            <Image url="@../IMAGES/podium-abstract-blue-composition-product-presentation-3d-rendering.jpg" />
+         </image>
+      </ImageView>
+      <ComboBox layoutX="718.0" layoutY="272.0" prefWidth="150.0" />
+      <ComboBox layoutX="719.0" layoutY="316.0" prefWidth="150.0" />
+      <ComboBox layoutX="719.0" layoutY="368.0" prefWidth="150.0" />
+      <ComboBox layoutX="719.0" layoutY="420.0" prefWidth="150.0" />
+      <ComboBox layoutX="718.0" layoutY="467.0" prefWidth="150.0" />
+      <Text layoutX="628.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filiere" />
+      <Text layoutX="623.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Semestre" />
+      <Text layoutX="632.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Module" />
+      <Text layoutX="627.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matiere" />
+      <Text layoutX="628.0" layoutY="484.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session" />
+      <Button layoutX="605.0" layoutY="546.0" mnemonicParsing="false" text="Valider" />
+      <Text layoutX="72.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue, professeur!" />
+      <ComboBox layoutX="1100.0" layoutY="81.0" prefWidth="150.0" />
+      <Text layoutX="1036.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Etudiant" />
+      <TextField layoutX="1095.0" layoutY="176.0" />
+      <TextField layoutX="1095.0" layoutY="234.0" />
+      <TextField layoutX="1096.0" layoutY="290.0" />
+      <Text layoutX="987.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note Controle" />
+      <Text layoutX="1002.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note TP" />
+      <Text layoutX="982.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note d'Examen" />
+      <Button layoutX="1189.0" layoutY="411.0" mnemonicParsing="false" text="Modifier" />
+      <Button layoutX="1192.0" layoutY="377.0" mnemonicParsing="false" text="Ajouter" />
+      <Button fx:id="afficherlisteetudiantsbutton" layoutX="558.0" layoutY="612.0" mnemonicParsing="false" onAction="#Interfaceprof3switchscene" text="Afficher la liste des etudiants" />
+      <Button layoutX="1073.0" layoutY="446.0" mnemonicParsing="false" text="Afficher les infos de l'etudiant" />
+      <ImageView fitHeight="92.0" fitWidth="66.0" layoutX="31.0" layoutY="625.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../IMAGES/Logout%20icon.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
