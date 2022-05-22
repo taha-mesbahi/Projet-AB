@@ -16,7 +16,7 @@ public class InterfaceProf1controller {
 	  
 	  public void  Interfaceprof2switchscene() throws IOException {
 			
-			Main signupscene = new Main();
+			Main signupscene = new Main();    //changer de scence 
 			signupscene.changeScene("InterfaceProfesseur2.fxml");
 			
 		}
