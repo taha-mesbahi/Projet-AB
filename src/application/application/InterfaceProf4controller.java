@@ -47,7 +47,7 @@ public class InterfaceProf4controller implements Initializable {
     private Button modifierbutton;
 
     @FXML
-    private ComboBox<?> modulebox;
+    private ComboBox<String> modulebox;
 
     @FXML
     private TextField nombresabscencesfield;
@@ -56,7 +56,7 @@ public class InterfaceProf4controller implements Initializable {
     private TextField nombresseancesfield;
 
     @FXML
-    private ComboBox<?> semestrebox;
+    private ComboBox<String> semestrebox;
 
     @FXML
     private ComboBox<?> typeseancebox;
@@ -67,6 +67,9 @@ public class InterfaceProf4controller implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {  //responsible for filling combobox
     	final ObservableList<String> filiere = FXCollections.observableArrayList();
+    	final ObservableList<String> semestre = FXCollections.observableArrayList();
+    	final ObservableList<String> module = FXCollections.observableArrayList();
+    	
     	
     	System.out.print(LoginController.idcompteconnecte);
 
@@ -102,14 +105,53 @@ public class InterfaceProf4controller implements Initializable {
     			
     			}
     			
+    			String query3 = "select Nom from semestre";
     			
+    			PreparedStatement St3= cnx.prepareStatement(query3) ; 
+    		
+    			ResultSet rsl3 = St3.executeQuery();
+
+    			while(rsl3.next()) {
+    				semestre.add(rsl3.getString("Nom"));
+    				System.out.println("rah kayjib semestre mn bbdd");
     	
     	
-    	 }catch(Exception e){    
+    	 } 
+                String query4 = "select IdModuleFK from Professeurs_Module where IdProfFK=?";
+    			
+    			PreparedStatement St4= cnx.prepareStatement(query4) ; 
+    			St4.setInt(1, LoginController.idcompteconnecte);
+    			ResultSet rsl4 = St4.executeQuery();
+    			ArrayList<Integer> idModules = new ArrayList<>();
+
+    			while(rsl4.next()) {
+    				idModules.add( rsl4.getInt("idModuleFK"));
+    				System.out.println("IdModuleFK"+idModules+"");
+
+    			} for(int i=0; i<idModules.size(); i++) { 
+        			String query5 = "select Nom from Module where idModule = ?";
+        			
+        			PreparedStatement St5= cnx.prepareStatement(query5) ; 
+        			St5.setInt(1,idModules.get(i));
+        			ResultSet rsl5 = St5.executeQuery();
+        			
+        			while(rsl5.next()) {
+        				module.add(rsl5.getString("Nom")); 
+
+        				System.out.println("rah kayjib module mn bd");
+        			}    	
+
+    			
+    			
+    			
+
+    		}} catch(Exception e){    
  			e.toString();
  		}
     		
-    		filierebox.setItems(filiere);}
+    		filierebox.setItems(filiere);
+    		semestrebox.setItems(semestre);
+    		modulebox.setItems(module);}
 
 	
 	  public void  Interfaceprof3switchscene() throws IOException {
