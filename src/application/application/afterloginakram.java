@@ -133,7 +133,7 @@ public class afterloginakram implements Initializable {
 			   String value4 = txt_email.getText();
 			  
 
-			   String sql = "update users set user_id= '"+value1+"',username= '"+value2+"',password= '"+value3+"',email= '"+value4+"'  where user_id = '"+value1+"'";
+			   String sql = "update comptes set idAuthen= '"+value1+"',Username= '"+value2+"',pssd= '"+value3+"',email= '"+value4+"'  where idAuthen = '"+value1+"'";
 			   PreparedStatement ps= conn.prepareStatement(sql);
 			   ps.execute();
 			   System.out.println("executee2");
@@ -152,7 +152,7 @@ public class afterloginakram implements Initializable {
 		   data.clear();
 		   try {
 		   Connection conn =mysqlconnect.getConnection();
-		   String sql = "DELETE FROM users WHERE user_id=?";
+		   String sql = "DELETE FROM comptes WHERE idAuthen=?";
 		   
 			   PreparedStatement ps = conn.prepareStatement(sql);
 			   ps.setString(1, txt_id.getText());
@@ -175,7 +175,7 @@ public class afterloginakram implements Initializable {
 
 			try {
 		        Connection conn = mysqlconnect.getConnection();
-				String sql = "SELECT * FROM users";
+				String sql = "SELECT * FROM comptes";
 				PreparedStatement stat = conn.prepareStatement(sql);
 				ResultSet rs = stat.executeQuery();
 				while (rs.next()) {    

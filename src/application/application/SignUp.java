@@ -330,7 +330,7 @@ public class SignUp implements Initializable {
     	catch (Exception e) {
     		e.printStackTrace();
 
-    		infoBox("Error! Retry (with other parametes preferably)", "Error", "Error Message");
+    		infoBox("Error! Retry (with other parameters slightly different preferably)", "Error", "Error Message");
     	}}
 
 

@@ -80,7 +80,7 @@ public class Main extends Application {
 			splashScreenDelay.playFromStart();
 
 
-	/*
+	
 			
 	//START music
 		File file = new File("src/application/IMAGES/Opera-GX-background-music-Evolve.wav"); // path to includE later on IMAGES ( WHICH IS NORMALLY A RESSOURCE PATH BUT YOU
@@ -92,7 +92,7 @@ public class Main extends Application {
 			clip.loop(Clip.LOOP_CONTINUOUSLY); // RECOMMENCE L'AUDIO EN CONTINU OTIMAL POUR UNE INSTALLATION DE TAILLE REDUITE
 			// END MUSIC 
 			 
-		*/
+		
 
 		} 
 

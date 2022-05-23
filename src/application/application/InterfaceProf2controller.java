@@ -436,11 +436,11 @@ public class InterfaceProf2controller implements Initializable {
 	    // Reader
 	    // under File -> Properties
 	    private static void addMetaData(Document document) {
-	        document.addTitle("My first PDF");
+	        document.addTitle("Our first PDF");
 	        document.addSubject("Using iText");
 	        document.addKeywords("Java, PDF, iText");
-	        document.addAuthor("Lars Vogel");
-	        document.addCreator("Lars Vogel");
+	        document.addAuthor("Taha Mesbahi & Saad Layachi");
+	        document.addCreator("Taha Mesbahi & Saad Layachi");
 	    }
 
 
