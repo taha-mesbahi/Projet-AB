@@ -171,7 +171,7 @@ public class InterfaceProf2controller implements Initializable {
             			String query7 = "select NomMatiere from Matiere where idMatiere = ?";
             			
             			PreparedStatement St7= cnx.prepareStatement(query7) ; 
-            			St7.setInt(1,idModules.get(i));
+            			St7.setInt(1,idMatieres.get(i));
             			ResultSet rsl7 = St7.executeQuery();
             			
             			while(rsl7.next()) {

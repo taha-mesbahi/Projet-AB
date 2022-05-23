@@ -94,7 +94,7 @@ import javafx.scene.input.KeyEvent
 					} else if (queryResult2.getInt(1)==2) {
 						Main m = new Main();
 
-						m.changeScene("InterfaceCoordinateur.fxml"); 
+						m.changeScene("InterfaceCoordinateur1.fxml"); 
 						
 						System.out.println("coord interface accessed");} 
 	
@@ -109,7 +109,7 @@ import javafx.scene.input.KeyEvent
 						
 						Main m = new Main();
 
-					m.changeScene("InterfaceEtudiant.fxml"); 
+					m.changeScene("InterfaceEtudiant1.fxml"); 
 					System.out.println("etudiant interface accessed");} 
 					}
 					

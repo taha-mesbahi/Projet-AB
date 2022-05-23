@@ -35,7 +35,7 @@ public class InterfaceProf4controller implements Initializable {
     private Button ajouter1abscencebutton;
 
     @FXML
-    private ComboBox<?> etudiantbox;
+    private ComboBox<String> etudiantbox;
 
     @FXML
     private ComboBox<String> filierebox;
@@ -159,7 +159,7 @@ public class InterfaceProf4controller implements Initializable {
              			String query7 = "select NomMatiere from Matiere where idMatiere = ?";
              			
              			PreparedStatement St7= cnx.prepareStatement(query7) ; 
-             			St7.setInt(1,idModules.get(i));
+             			St7.setInt(1,idMatieres.get(i));
              			ResultSet rsl7 = St7.executeQuery();
              			
              			while(rsl7.next()) {
@@ -178,10 +178,23 @@ public class InterfaceProf4controller implements Initializable {
         			while(rsl8.next()) {
         				typeseance.add(rsl8.getString("TypeSeance"));
         				System.out.println("rah kayjib typeseance mn bbdd");
-     			
-    			
+    		}
+        			
+   /*
+                    String query9 = "select IdcompteFK from Etudiants where NomComplet =?";
+                    PreparedStatement  st9 = cnx.prepareStatement(query9);
+        			
+                    st9.setString(1,etudiantbox.getPromptText());	
+					ResultSet rsl9 = st9.executeQuery();
 
-    		}} catch(Exception e){    
+     			
+    		
+    		*/
+    		
+    		
+        			
+    		
+    		} catch(Exception e){    
  			e.toString();
  		}
     		
