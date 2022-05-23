@@ -41,7 +41,7 @@ public class InterfaceProf4controller implements Initializable {
     private ComboBox<String> filierebox;
 
     @FXML
-    private ComboBox<?> matierebox;
+    private ComboBox<String> matierebox;
 
     @FXML
     private Button modifierbutton;
@@ -59,7 +59,7 @@ public class InterfaceProf4controller implements Initializable {
     private ComboBox<String> semestrebox;
 
     @FXML
-    private ComboBox<?> typeseancebox;
+    private ComboBox<String> typeseancebox;
 
     @FXML
     private Button validerbutton;
@@ -70,7 +70,7 @@ public class InterfaceProf4controller implements Initializable {
     	final ObservableList<String> semestre = FXCollections.observableArrayList();
     	final ObservableList<String> module = FXCollections.observableArrayList();
     	final ObservableList<String> matiere = FXCollections.observableArrayList();
-    	
+    	final ObservableList<String> typeseance = FXCollections.observableArrayList();
     	
     	
     	System.out.print(LoginController.idcompteconnecte);
@@ -166,17 +166,30 @@ public class InterfaceProf4controller implements Initializable {
              				matiere.add(rsl7.getString("NomMatiere")); 
 
              				System.out.println("rah kayjib matiere mn bd");
-             			}   }	
+             			}   }
+         			
+         			
+         			String query8 = "select TypeSeance from TypeSeance";
+        			
+        			PreparedStatement St8= cnx.prepareStatement(query8) ; 
+        		
+        			ResultSet rsl8 = St8.executeQuery();
+
+        			while(rsl8.next()) {
+        				typeseance.add(rsl8.getString("TypeSeance"));
+        				System.out.println("rah kayjib typeseance mn bbdd");
      			
     			
 
-    		} catch(Exception e){    
+    		}} catch(Exception e){    
  			e.toString();
  		}
     		
     		filierebox.setItems(filiere);
     		semestrebox.setItems(semestre);
-    		modulebox.setItems(module);}
+    		modulebox.setItems(module);
+    		matierebox.setItems(matiere);
+    		typeseancebox.setItems(typeseance);}
 
 	
 	  public void  Interfaceprof3switchscene() throws IOException {

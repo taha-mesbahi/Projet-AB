@@ -71,7 +71,7 @@ public class InterfaceProf2controller implements Initializable {
     private ComboBox<String> semestrebox;
 
     @FXML
-    private ComboBox<?> sessionbox;
+    private ComboBox<String> sessionbox;
 
     @FXML
     private Button validerbutton;
@@ -83,6 +83,7 @@ public class InterfaceProf2controller implements Initializable {
     	final ObservableList<String> semestre1 = FXCollections.observableArrayList();
     	final ObservableList<String> module = FXCollections.observableArrayList();
     	final ObservableList<String> matiere = FXCollections.observableArrayList();
+    	final ObservableList<String> session = FXCollections.observableArrayList();
     	
     	System.out.print(LoginController.idcompteconnecte);
 
@@ -179,7 +180,18 @@ public class InterfaceProf2controller implements Initializable {
             				System.out.println("rah kayjib matiere mn bd");
             			}   } 	
     			
+
+         			String query8 = "select Session from Session";
         			
+        			PreparedStatement St8= cnx.prepareStatement(query8) ; 
+        		
+        			ResultSet rsl8 = St8.executeQuery();
+
+        			while(rsl8.next()) {
+        				session.add(rsl8.getString("Session"));
+        				System.out.println("rah kayjib session mn bbdd");
+     			
+        			}
         			
         			
         			
@@ -197,7 +209,8 @@ public class InterfaceProf2controller implements Initializable {
     		filierebox.setItems(filiere1);
     		semestrebox.setItems(semestre1);
     		modulebox.setItems(module);
-    		matierebox.setItems(matiere);}
+    		matierebox.setItems(matiere);
+    		sessionbox.setItems(session);}
 
 	 
 	  public void  Interfaceprof3switchscene() throws IOException {
