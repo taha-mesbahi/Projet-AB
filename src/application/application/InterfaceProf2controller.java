@@ -9,6 +9,7 @@ import java.sql.Connection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -24,6 +25,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 
 
@@ -44,7 +46,7 @@ public class InterfaceProf2controller implements Initializable {
     private Button ajouterbutton;
 
     @FXML
-    private ComboBox<?> etudiantbox;
+    private ComboBox<String> etudiantbox;
 
     @FXML
     private ComboBox<String> filierebox;
@@ -84,6 +86,7 @@ public class InterfaceProf2controller implements Initializable {
     	final ObservableList<String> module = FXCollections.observableArrayList();
     	final ObservableList<String> matiere = FXCollections.observableArrayList();
     	final ObservableList<String> session = FXCollections.observableArrayList();
+    	final ObservableList<String> etudiants = FXCollections.observableArrayList();
     	
     	System.out.print(LoginController.idcompteconnecte);
 
@@ -194,6 +197,21 @@ public class InterfaceProf2controller implements Initializable {
         			}
         			
         			
+                    String query9 = "Select NomComplet from comptes where idRoleFK=4";
+           			
+           			PreparedStatement St9= cnx.prepareStatement(query9) ; 
+           			ResultSet rsl9 = St9.executeQuery();
+           			ArrayList<Integer> idEtudiants = new ArrayList<>();
+
+           			while(rsl9.next()) {
+           				etudiants.add( rsl9.getString("NomComplet"));
+           				System.out.println("IdEtudiant"+idEtudiants+"");
+
+           			}
+        			
+           			
+           			
+           			
         			
     			///
     			
@@ -210,7 +228,8 @@ public class InterfaceProf2controller implements Initializable {
     		semestrebox.setItems(semestre1);
     		modulebox.setItems(module);
     		matierebox.setItems(matiere);
-    		sessionbox.setItems(session);}
+    		sessionbox.setItems(session);
+    		etudiantbox.setItems(etudiants);}
 
 	 
 	  public void  Interfaceprof3switchscene() throws IOException {
@@ -224,6 +243,89 @@ public class InterfaceProf2controller implements Initializable {
 			
 			Main logout = new Main();
 			logout.changeScene("Login.fxml");
+
+			
+		}
+	  
+	  
+	  public void  AddNote() throws SQLException {
+		  
+			
+          String query10 = "Select idAuthen from comptes where idRoleFK=4 and NomComplet = ?";
+          Connection cnx = mysqlconnect.getConnection();
+          
+ 			PreparedStatement St10= cnx.prepareStatement(query10) ; 
+ 			St10.setString(1, etudiantbox.getValue());
+ 			ResultSet rsl10 = St10.executeQuery();
+ 			int idEtudiant = -1;
+
+ 			while(rsl10.next()) {
+ 				idEtudiant= rsl10.getInt("idAuthen");
+ 				System.out.println("IdEtudi");
+
+ 			}
+ 		
+ 			  String query11 = "Select idSemestre from semestre where Nom=?";
+ 	        
+ 	          
+ 	 			PreparedStatement St11= cnx.prepareStatement(query11) ; 
+ 	 			St11.setString(1, semestrebox.getValue());
+ 	 			ResultSet rsl11 = St11.executeQuery();
+ 	 			int idsemestre = -1;
+
+ 	 			while(rsl11.next()) {
+ 	 				idsemestre= rsl11.getInt("idSemestre");
+ 	 				System.out.println("IdSEMSEXTRACTED");
+
+ 	 			}
+ 	 		
+ 	 			String query12 = "Select idSession from Session where Session=?";
+ 	 	        
+ 	 	          
+ 	 			PreparedStatement St12= cnx.prepareStatement(query12) ; 
+ 	 			St12.setString(1, sessionbox.getValue());
+ 	 			ResultSet rsl12 = St12.executeQuery();
+ 	 			int idsession = -1;
+
+ 	 			while(rsl12.next()) {
+ 	 				idsession= rsl12.getInt("idSession");
+ 	 				System.out.println("IdSEssEXTRACTED");
+
+ 	 			}
+ 	 		
+ 	 			String query13 = "Select idMatiere from Matiere where NomMatiere=?";
+ 	 	        
+	 	          
+ 	 			PreparedStatement St13= cnx.prepareStatement(query13) ; 
+ 	 			St13.setString(1, matierebox.getValue());
+ 	 			ResultSet rsl13 = St13.executeQuery();
+ 	 			int idmatiere = -1;
+
+ 	 			while(rsl13.next()) {
+ 	 				idmatiere= rsl13.getInt("idMatiere");
+ 	 				System.out.println("IdMatiereEXTRACTED");
+
+ 	 			}
+ 	 		
+		  
+
+		  PreparedStatement ps= cnx.prepareStatement("insert into NotesEtudiants (idcompteEtudiant, SemestreId, SessionId, idMatiere, NoteCC, NoteTP, NoteExamen) values (?,?,?,?,?,?,?)");
+		    ps.setInt(1, idEtudiant);
+		    
+		    
+			ps.setInt(2,idsemestre);
+		    ps.setInt(3,idsession);
+			ps.setInt(4,idmatiere);
+
+		    
+		    
+			ps.setString(5,notecontrolefield.getText());
+			ps.setString(6,notetpfield.getText());
+			ps.setString(7,noteexamenfield.getText());
+	
+			ps.execute();
+	  	
+		
 
 			
 		}

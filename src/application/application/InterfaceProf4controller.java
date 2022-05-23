@@ -9,6 +9,7 @@ import java.sql.Connection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -71,6 +72,7 @@ public class InterfaceProf4controller implements Initializable {
     	final ObservableList<String> module = FXCollections.observableArrayList();
     	final ObservableList<String> matiere = FXCollections.observableArrayList();
     	final ObservableList<String> typeseance = FXCollections.observableArrayList();
+    	final ObservableList<String> etudiants = FXCollections.observableArrayList();
     	
     	
     	System.out.print(LoginController.idcompteconnecte);
@@ -180,7 +182,20 @@ public class InterfaceProf4controller implements Initializable {
         				System.out.println("rah kayjib typeseance mn bbdd");
     		}
         			
+                    String query9 = "Select NomComplet from comptes where idRoleFK=4";
+           			
+           			PreparedStatement St9= cnx.prepareStatement(query9) ; 
+           			ResultSet rsl9 = St9.executeQuery();
+           			ArrayList<Integer> idEtudiants = new ArrayList<>();
+
+           			while(rsl9.next()) {
+           				etudiants.add( rsl9.getString("NomComplet"));
+           				System.out.println("IdEtudiant"+idEtudiants+"");
+
+           			}
+        			
    /*
+   
                     String query9 = "select IdcompteFK from Etudiants where NomComplet =?";
                     PreparedStatement  st9 = cnx.prepareStatement(query9);
         			
@@ -202,7 +217,89 @@ public class InterfaceProf4controller implements Initializable {
     		semestrebox.setItems(semestre);
     		modulebox.setItems(module);
     		matierebox.setItems(matiere);
-    		typeseancebox.setItems(typeseance);}
+    		typeseancebox.setItems(typeseance);
+    		etudiantbox.setItems(etudiants);}
+    
+    
+    public void  Add1Abscence() throws SQLException {
+		  
+		
+        String query10 = "Select idAuthen from comptes where idRoleFK=4 and NomComplet = ?";
+        Connection cnx = mysqlconnect.getConnection();
+        
+			PreparedStatement St10= cnx.prepareStatement(query10) ; 
+			St10.setString(1, etudiantbox.getValue());
+			ResultSet rsl10 = St10.executeQuery();
+			int idEtudiant = -1;
+
+			while(rsl10.next()) {
+				idEtudiant= rsl10.getInt("idAuthen");
+				System.out.println("IdEtudi");
+
+			}
+		
+			  String query11 = "Select idSemestre from semestre where Nom=?";
+	        
+	          
+	 			PreparedStatement St11= cnx.prepareStatement(query11) ; 
+	 			St11.setString(1, semestrebox.getValue());
+	 			ResultSet rsl11 = St11.executeQuery();
+	 			int idsemestre = -1;
+
+	 			while(rsl11.next()) {
+	 				idsemestre= rsl11.getInt("idSemestre");
+	 				System.out.println("IdSEMSEXTRACTED");
+
+	 			}
+	 		
+	 			String query12 = "Select idTypeSeance from TypeSeance where TypeSeance=?";
+	 	        
+	 	          
+	 			PreparedStatement St12= cnx.prepareStatement(query12) ; 
+	 			St12.setString(1, typeseancebox.getValue());
+	 			ResultSet rsl12 = St12.executeQuery();
+	 			int idtypeseance= -1;
+
+	 			while(rsl12.next()) {
+	 				idtypeseance= rsl12.getInt("idTypeSeance");
+	 				System.out.println("IdSEancetypeEXTRACTED");
+
+	 			}
+	 		
+	 			String query13 = "Select idMatiere from Matiere where NomMatiere=?";
+	 	        
+	 	          
+	 			PreparedStatement St13= cnx.prepareStatement(query13) ; 
+	 			St13.setString(1, matierebox.getValue());
+	 			ResultSet rsl13 = St13.executeQuery();
+	 			int idmatiere = -1;
+
+	 			while(rsl13.next()) {
+	 				idmatiere= rsl13.getInt("idMatiere");
+	 				System.out.println("IdMatiereEXTRACTED");
+
+	 			}
+	 		
+		  
+
+		  PreparedStatement ps= cnx.prepareStatement("insert into Abscences (idEtudiantFK, idMatiereFK, idSemestreFK, idTypeSeanceFK, NombreAbscences) values (?,?,?,?,?)");
+		    ps.setInt(1, idEtudiant);
+		    
+		    
+			ps.setInt(3,idsemestre);
+			ps.setInt(2,idmatiere);
+
+			ps.setInt(4,idtypeseance);
+			ps.setString(5,nombresabscencesfield.getText());
+		
+	
+			ps.execute();
+	  	
+		
+
+			
+		}
+
 
 	
 	  public void  Interfaceprof3switchscene() throws IOException {
