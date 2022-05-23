@@ -130,13 +130,21 @@ public class SignUp implements Initializable {
     		}
 
 
-    		else if(RoleSelection.getValue().equals("Coordinateur")) {  
-    			PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK,IDFiliereFK) values (?,?,?,?,2,1)");
+    		else if(RoleSelection.getValue().equals("Coordinateur")) { 
+    			PreparedStatement ps0= conn.prepareStatement("Select IdAuthen from comptes order by IdAuthen DESC limit 1");
+    			ResultSet queryResult2 = ps0.executeQuery();
+    			int lastId = -1;
+    			while(queryResult2.next()) {
+    				lastId = queryResult2.getInt(1)+1;
+
+    			}
+    			PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK,IDFiliereFK, IdAuthen) values (?,?,?,?,2,1,?)");
     			System.out.println("Coordinateur Home to pass on greatly detected");
     			ps.setString(1,FirstNameField.getText());
     			ps.setString(2,LastNameField.getText());
     			ps.setString(3,PasswordField.getText());
     			ps.setString(4,TelephoneField.getText());
+    			ps.setInt(5,lastId);
     			ps.execute();}
 
 
@@ -145,9 +153,7 @@ public class SignUp implements Initializable {
 
     			PreparedStatement ps0= conn.prepareStatement("Select IdAuthen from comptes order by IdAuthen DESC limit 1");
     			ResultSet queryResult2 = ps0.executeQuery();
-
     			int lastId = -1;
-
     			while(queryResult2.next()) {
     				lastId = queryResult2.getInt(1)+1;
 
@@ -189,12 +195,20 @@ public class SignUp implements Initializable {
 
 
     		else if(RoleSelection.getValue().equals("Coordinateur")) {  
-    			PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK,IDFiliereFK) values (?,?,?,?,2,2)");
+    			PreparedStatement ps0= conn.prepareStatement("Select IdAuthen from comptes order by IdAuthen DESC limit 1");
+    			ResultSet queryResult2 = ps0.executeQuery();
+    			int lastId = -1;
+    			while(queryResult2.next()) {
+    				lastId = queryResult2.getInt(1)+1;
+
+    			}
+    			PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK,IDFiliereFK, IdAuthen) values (?,?,?,?,2,2,?)");
     			System.out.println("Coordinateur Home to pass on greatly detected");
     			ps.setString(1,FirstNameField.getText());
     			ps.setString(2,LastNameField.getText());
     			ps.setString(3,PasswordField.getText());
     			ps.setString(4,TelephoneField.getText());
+    			ps.setInt(5,lastId);
     			ps.execute();}
 
 
@@ -247,14 +261,21 @@ public class SignUp implements Initializable {
 
 
     		else if(RoleSelection.getValue().equals("Coordinateur")) {  
-    			PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK,IDFiliereFK) values (?,?,?,?,2,3)");
+    			PreparedStatement ps0= conn.prepareStatement("Select IdAuthen from comptes order by IdAuthen DESC limit 1");
+    			ResultSet queryResult2 = ps0.executeQuery();
+    			int lastId = -1;
+    			while(queryResult2.next()) {
+    				lastId = queryResult2.getInt(1)+1;
+
+    			}
+    			PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK,IDFiliereFK, IdAuthen) values (?,?,?,?,2,3,?)");
     			System.out.println("Coordinateur Home to pass on greatly detected");
     			ps.setString(1,FirstNameField.getText());
     			ps.setString(2,LastNameField.getText());
     			ps.setString(3,PasswordField.getText());
     			ps.setString(4,TelephoneField.getText());
+    			ps.setInt(5,lastId);
     			ps.execute();}
-
 
     		else {
     			PreparedStatement ps0= conn.prepareStatement("Select IdAuthen from comptes order by IdAuthen DESC limit 1");

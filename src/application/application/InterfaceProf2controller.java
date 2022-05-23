@@ -1,5 +1,6 @@
 package application;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 
@@ -14,6 +15,22 @@ import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
+import com.itextpdf.text.Anchor;
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chapter;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.List;
+import com.itextpdf.text.ListItem;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Section;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.mysql.cj.xdevapi.Statement;
 
 import java.util.ArrayList;
@@ -25,8 +42,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-
 
 
 public class InterfaceProf2controller implements Initializable {
@@ -55,7 +70,7 @@ public class InterfaceProf2controller implements Initializable {
     private ComboBox<String> matierebox;
 
     @FXML
-    private Button modifierbutton;
+    private Button exportpdfbutton;
 
     @FXML
     private ComboBox<String> modulebox;
@@ -330,6 +345,178 @@ public class InterfaceProf2controller implements Initializable {
 			
 		}
 
+	  private static String FILE = "/Users/macbook/Downloads/test.pdf";
+	    private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
+	            Font.BOLD);
+	    private static Font redFont = new Font(Font.FontFamily.TIMES_ROMAN, 12,
+	            Font.NORMAL, BaseColor.RED);
+	    private static Font subFont = new Font(Font.FontFamily.TIMES_ROMAN, 16,
+	            Font.BOLD);
+	    private static Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
+	            Font.BOLD);
+	  public void exportData() throws SQLException {
+			Connection cnx = mysqlconnect.getConnection();
 
+	    	
+	    	String query2 = "Select idAuthen from comptes where idRoleFK=4 and NomComplet=?";
+	   		PreparedStatement St2= cnx.prepareStatement(query2) ; 
+	   		St2.setString(1, etudiantbox.getValue());
+			ResultSet rsl2 = St2.executeQuery();
+			int idEtudiant = -1;
+
+			while(rsl2.next()) {
+					idEtudiant = rsl2.getInt("idAuthen");
+					System.out.println("IdEtudiant");
+			}
+			
+	    	
+	    	String query5 = "select * from NotesEtudiants where idcompteEtudiant = ?";
+			PreparedStatement St5= cnx.prepareStatement(query5) ; 
+
+			St5.setInt(1,idEtudiant);
+			ResultSet rsl5 = St5.executeQuery();
+			
+			ArrayList<String> data = new ArrayList<>();
+			
+			while(rsl5.next()) {
+				data.add(rsl5.getString("idNotesEtudiants")); 
+				String query3= "Select NomMatiere from matiere where idmatiere=?";
+		   		PreparedStatement St3= cnx.prepareStatement(query3) ; 
+		   		St3.setInt(1, rsl5.getInt("idMatiere"));
+				ResultSet rsl3 = St3.executeQuery();
+				String NomMatiere = "";
+
+				while(rsl3.next()) {
+					    NomMatiere = rsl3.getString("NomMatiere");
+						System.out.println("IdEtudiant");
+				}
+				
+				data.add(NomMatiere);
+				data.add(String.valueOf( rsl5.getFloat("NoteCC")));
+				data.add(String.valueOf( rsl5.getFloat("NoteTP")));
+				data.add(String.valueOf( rsl5.getFloat("NoteExamen")));
+
+
+				System.out.println("rah kayjib module mn bdjjj");
+			}   
+			
+			cnx.close();
+			
+			for(int i=0;i< data.size();i++ ) {
+				System.out.println("data"+data.get(i));
+			}
+
+	    	
+	        try {
+	            Document document = new Document();
+	            PdfWriter.getInstance(document, new FileOutputStream(FILE));
+	            document.open();
+	            addMetaData(document);
+	    		
+	    	/*	dataa.add(1);
+	    		dataa.add("java");
+	    		dataa.add(18);
+	    		dataa.add(2);
+	    		dataa.add("javccda");
+	    		dataa.add(12);
+
+	    		dataa.add(2);
+	    		dataa.add("javaccc");
+	    		dataa.add(13);  */
+
+
+	            addContent(document,data, etudiantbox.getValue());
+	            document.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	  }
+	  
+	  // iText allows to add metadata to the PDF which can be viewed in your Adobe
+	    // Reader
+	    // under File -> Properties
+	    private static void addMetaData(Document document) {
+	        document.addTitle("My first PDF");
+	        document.addSubject("Using iText");
+	        document.addKeywords("Java, PDF, iText");
+	        document.addAuthor("Lars Vogel");
+	        document.addCreator("Lars Vogel");
+	    }
+
+
+	    private static void addContent(Document document, ArrayList students, String name) throws DocumentException {
+	        Anchor anchor = new Anchor(name, catFont);
+	        anchor.setName("Name student");
+
+	        // Second parameter is the number of the chapter
+	        Chapter catPart = new Chapter(new Paragraph(anchor), 1);
+
+	        Paragraph subPara = new Paragraph("", subFont);
+	        Section subCatPart = catPart.addSection(subPara);
+	 
+
+	        addEmptyLine(subPara, 8);
+
+	        // add a table
+	        
+	        createTable(subCatPart, students);
+
+	        // now add all this to the document
+	        document.add(catPart);
+
+
+	    }
+
+	    private static void createTable(Section subCatPart, ArrayList mydata)
+	            throws BadElementException {
+	        PdfPTable table = new PdfPTable(5);
+
+	        // t.setBorderColor(BaseColor.GRAY);
+	        // t.setPadding(4);
+	        // t.setSpacing(4);
+	        // t.setBorderWidth(1);
+
+	        PdfPCell c1 = new PdfPCell(new Phrase("id"));
+	        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+	        table.addCell(c1);
+
+	        c1 = new PdfPCell(new Phrase("matiere"));
+	        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+	        table.addCell(c1);
+
+	        c1 = new PdfPCell(new Phrase("note CC"));
+	        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+	        table.addCell(c1);
+	        c1 = new PdfPCell(new Phrase("note Tp"));
+	        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+	        table.addCell(c1);
+	        c1 = new PdfPCell(new Phrase("note Exam"));
+	        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+	        table.addCell(c1);
+	       
+	       
+	        table.setHeaderRows(1);
+
+	        for(int i = 0 ; i < mydata.size();i++) {
+	        table.addCell(mydata.get(i).toString());
+	        }
+
+	        subCatPart.add(table);
+
+	    }
+
+	    private static void createList(Section subCatPart) {
+	        List list = new List(true, false, 10);
+	        list.add(new ListItem("First point"));
+	        list.add(new ListItem("Second point"));
+	        list.add(new ListItem("Third point"));
+	        subCatPart.add(list);
+	    }
+
+	    private static void addEmptyLine(Paragraph paragraph, int number) {
+	        for (int i = 0; i < number; i++) {
+	            paragraph.add(new Paragraph(" "));
+	        }
+	    }
 	
 }
