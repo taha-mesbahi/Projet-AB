@@ -69,6 +69,8 @@ public class InterfaceProf4controller implements Initializable {
     	final ObservableList<String> filiere = FXCollections.observableArrayList();
     	final ObservableList<String> semestre = FXCollections.observableArrayList();
     	final ObservableList<String> module = FXCollections.observableArrayList();
+    	final ObservableList<String> matiere = FXCollections.observableArrayList();
+    	
     	
     	
     	System.out.print(LoginController.idcompteconnecte);
@@ -139,13 +141,36 @@ public class InterfaceProf4controller implements Initializable {
         				module.add(rsl5.getString("Nom")); 
 
         				System.out.println("rah kayjib module mn bd");
-        			}    	
+        			}    	}
 
     			
-    			
+        			 String query6 = "select IdMatiereFK from Professeurs_Matiere where IdProfFK=?";
+         			
+         			PreparedStatement St6= cnx.prepareStatement(query6) ; 
+         			St6.setInt(1, LoginController.idcompteconnecte);
+         			ResultSet rsl6 = St6.executeQuery();
+         			ArrayList<Integer> idMatieres = new ArrayList<>();
+
+         			while(rsl6.next()) {
+         				idMatieres.add( rsl6.getInt("idMatiereFK"));
+         				System.out.println("IdMatiereFK"+idMatieres+"");
+
+         			} for(int i=0; i<idMatieres.size(); i++) { 
+             			String query7 = "select NomMatiere from Matiere where idMatiere = ?";
+             			
+             			PreparedStatement St7= cnx.prepareStatement(query7) ; 
+             			St7.setInt(1,idModules.get(i));
+             			ResultSet rsl7 = St7.executeQuery();
+             			
+             			while(rsl7.next()) {
+             				matiere.add(rsl7.getString("NomMatiere")); 
+
+             				System.out.println("rah kayjib matiere mn bd");
+             			}   }	
+     			
     			
 
-    		}} catch(Exception e){    
+    		} catch(Exception e){    
  			e.toString();
  		}
     		
