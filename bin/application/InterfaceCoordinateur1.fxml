@@ -16,6 +16,6 @@
       <Text fill="WHITE" layoutX="113.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome, Coordinator!" />
       <Button layoutX="579.0" layoutY="218.0" mnemonicParsing="false" onAction="#Interfacecoord2switchscene" text="Add New Teacher" />
       <Button layoutX="577.0" layoutY="285.0" mnemonicParsing="false" onAction="#Interfacecoord3switchscene" text="Modify coefficients" />
-      <Button layoutX="579.0" layoutY="347.0" mnemonicParsing="false" onAction="#Interfacecoord4switchscene" text="Configure Subject" />
+      <Button layoutX="545.0" layoutY="347.0" mnemonicParsing="false" onAction="#Interfacecoord4switchscene" text="Configure Number of Sessions" />
    </children>
 </AnchorPane>
