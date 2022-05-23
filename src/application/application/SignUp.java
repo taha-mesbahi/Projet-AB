@@ -2,6 +2,7 @@ package application;
 
 
 
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -109,173 +110,213 @@ public class SignUp implements Initializable {
     }
 
 
-	public void SignUp() {
+    public void SignUp() {
 
-		Connection conn = mysqlconnect.getConnection();
-		try { 
-			
-			//
-			if(FiliereSelection.getValue().equals("Sic")) { System.out.println("filiere sic Home to pass on greatly detected");
-			
-			if (RoleSelection.getValue().equals("Etudiant")) { 
-				System.out.println("Student Home to pass on greatly detected");
-				PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK, IDFiliereFK) values (?,?,?,?,4,1)");
-				ps.setString(1,FirstNameField.getText());
-				ps.setString(2,LastNameField.getText());
-				ps.setString(3,PasswordField.getText());
-				ps.setString(4,TelephoneField.getText());
-				ps.execute();
-				
-				
-				
-			
-				}
+    	Connection conn = mysqlconnect.getConnection();
+    	try { 
+
+    		//
+    		if(FiliereSelection.getValue().equals("Sic")) { System.out.println("filiere sic Home to pass on greatly detected");
+
+    		if (RoleSelection.getValue().equals("Etudiant")) { 
+    			System.out.println("Student Home to pass on greatly detected");
+    			PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK, IDFiliereFK) values (?,?,?,?,4,1)");
+    			ps.setString(1,FirstNameField.getText());
+    			ps.setString(2,LastNameField.getText());
+    			ps.setString(3,PasswordField.getText());
+    			ps.setString(4,TelephoneField.getText());
+    			ps.execute();
+
+    		}
 
 
-
-			 else if(RoleSelection.getValue().equals("Coordinateur")) {  
-				PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK,IDFiliereFK) values (?,?,?,?,2,1)");
-				System.out.println("Coordinateur Home to pass on greatly detected");
-				ps.setString(1,FirstNameField.getText());
-				ps.setString(2,LastNameField.getText());
-				ps.setString(3,PasswordField.getText());
-				ps.setString(4,TelephoneField.getText());
-				ps.execute();}
-				
-
-			else {
-				PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK,IDFiliereFK) values (?,?,?,?,3,1)");
-				System.out.println("Prof Home to pass on greatly detected");
-				ps.setString(1,FirstNameField.getText());
-				ps.setString(2,LastNameField.getText());
-				ps.setString(3,PasswordField.getText());
-				ps.setString(4,TelephoneField.getText());
-				ps.execute();
-			}
-		} 
-			
-			else if (FiliereSelection.getValue().equals("Ge")) {System.out.println("filiere ge Home to pass on greatly detected");
-			PreparedStatement ps1= conn.prepareStatement("insert into comptes (IDFiliereFK) values (2)");
-			if (RoleSelection.getValue().equals("Etudiant")) { 
-				System.out.println("Student Home to pass on greatly detected");
-				PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK, IDFiliereFK) values (?,?,?,?,4,2)");
-				ps.setString(1,FirstNameField.getText());
-				ps.setString(2,LastNameField.getText());
-				ps.setString(3,PasswordField.getText());
-				ps.setString(4,TelephoneField.getText());
-				ps.execute();
-				
-				
-				
-			
-				}
+    		else if(RoleSelection.getValue().equals("Coordinateur")) {  
+    			PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK,IDFiliereFK) values (?,?,?,?,2,1)");
+    			System.out.println("Coordinateur Home to pass on greatly detected");
+    			ps.setString(1,FirstNameField.getText());
+    			ps.setString(2,LastNameField.getText());
+    			ps.setString(3,PasswordField.getText());
+    			ps.setString(4,TelephoneField.getText());
+    			ps.execute();}
 
 
+    		else {
 
-			 else if(RoleSelection.getValue().equals("Coordinateur")) {  
-				PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK,IDFiliereFK) values (?,?,?,?,2,2)");
-				System.out.println("Coordinateur Home to pass on greatly detected");
-				ps.setString(1,FirstNameField.getText());
-				ps.setString(2,LastNameField.getText());
-				ps.setString(3,PasswordField.getText());
-				ps.setString(4,TelephoneField.getText());
-				ps.execute();}
-				
 
-			else {
-				PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK,IDFiliereFK) values (?,?,?,?,3,2)");
-				System.out.println("Prof Home to pass on greatly detected");
-				ps.setString(1,FirstNameField.getText());
-				ps.setString(2,LastNameField.getText());
-				ps.setString(3,PasswordField.getText());
-				ps.setString(4,TelephoneField.getText());
-				ps.execute();
-			}
+    			PreparedStatement ps0= conn.prepareStatement("Select IdAuthen from comptes order by IdAuthen DESC limit 1");
+    			ResultSet queryResult2 = ps0.executeQuery();
 
-	} 
-			
-			else { System.out.println("filiere Gme Home to pass on greatly detected");
-		
-			if (RoleSelection.getValue().equals("Etudiant")) { 
-				System.out.println("Student Home to pass on greatly detected");
-				PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK,IDFiliereFK) values (?,?,?,?,4,3)");
-				ps.setString(1,FirstNameField.getText());
-				ps.setString(2,LastNameField.getText());
-				ps.setString(3,PasswordField.getText());
-				ps.setString(4,TelephoneField.getText());
-				ps.execute();
-				
-				
-				
-			
-				}
+    			int lastId = -1;
+
+    			while(queryResult2.next()) {
+    				lastId = queryResult2.getInt(1)+1;
+
+    			}
+
+
+    			PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK, IdAuthen, IDFiliereFK) values (?,?,?,?,3,?,1)");
+
+    			System.out.println("Prof Home to pass on greatly detected");
+    			ps.setString(1,FirstNameField.getText());
+    			ps.setString(2,LastNameField.getText());
+    			ps.setString(3,PasswordField.getText());
+    			ps.setString(4,TelephoneField.getText());
+    			ps.setInt(5,lastId);
+    			ps.execute();
+
+    			PreparedStatement ps1= conn.prepareStatement("insert into Professeurs_Filiere (IdProfFK,IDFiliereFK) values (?,1)");  
+    			ps1.setInt(1,lastId);
+    			ps1.execute();//
+    		}
+    		} 
+
+    		else if (FiliereSelection.getValue().equals("Ge")) {System.out.println("filiere ge Home to pass on greatly detected");
+    		PreparedStatement ps1= conn.prepareStatement("insert into comptes (IDFiliereFK) values (2)");
+    		if (RoleSelection.getValue().equals("Etudiant")) { 
+    			System.out.println("Student Home to pass on greatly detected");
+    			PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK, IDFiliereFK) values (?,?,?,?,4,2)");
+    			ps.setString(1,FirstNameField.getText());
+    			ps.setString(2,LastNameField.getText());
+    			ps.setString(3,PasswordField.getText());
+    			ps.setString(4,TelephoneField.getText());
+    			ps.execute();
 
 
 
-			 else if(RoleSelection.getValue().equals("Coordinateur")) {  
-				PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK,IDFiliereFK) values (?,?,?,?,2,3)");
-				System.out.println("Coordinateur Home to pass on greatly detected");
-				ps.setString(1,FirstNameField.getText());
-				ps.setString(2,LastNameField.getText());
-				ps.setString(3,PasswordField.getText());
-				ps.setString(4,TelephoneField.getText());
-				ps.execute();}
-				
 
-			else {
-				PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK,IDFiliereFK) values (?,?,?,?,3,3)");
-				System.out.println("Prof Home to pass on greatly detected");
-				ps.setString(1,FirstNameField.getText());
-				ps.setString(2,LastNameField.getText());
-				ps.setString(3,PasswordField.getText());
-				ps.setString(4,TelephoneField.getText());
-				ps.execute();
-			}
-	}
-			
-			
-			//ps.setString(5,FiliereSelection.getValue());
-
-
-			
-			
-		
-
-			String query3 = "SELECT Username FROM comptes where NOM= '" + LastNameField.getText() + "' AND PRENOM = '" + FirstNameField.getText()+ "'";
-			Connection cnx = mysqlconnect.getConnection();
-			PreparedStatement St3= cnx.prepareStatement(query3) ; 
-			ResultSet rsl3 = St3.executeQuery();
-			
-		
-	        while(rsl3.next()){
-	    
-	        	
-			
-			
-			infoBox("You are signed up as '" + rsl3.getString("Username") + "' Successfully", "Success", "Info");
-			System.out.println("succes inscription");
-			
-			
-			Main m = new Main();
-
-			m.changeScene("Login.fxml");
-
-			conn.close(); }}
-
-			catch (Exception e) {
-				e.printStackTrace();
-				
-				infoBox("Error! Retry (with other parametes preferably)", "Error", "Error Message");
-			}
+    		}
 
 
 
-		  }
+    		else if(RoleSelection.getValue().equals("Coordinateur")) {  
+    			PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK,IDFiliereFK) values (?,?,?,?,2,2)");
+    			System.out.println("Coordinateur Home to pass on greatly detected");
+    			ps.setString(1,FirstNameField.getText());
+    			ps.setString(2,LastNameField.getText());
+    			ps.setString(3,PasswordField.getText());
+    			ps.setString(4,TelephoneField.getText());
+    			ps.execute();}
+
+
+    		else {
+    			PreparedStatement ps0= conn.prepareStatement("Select IdAuthen from comptes order by IdAuthen DESC limit 1");
+    			ResultSet queryResult2 = ps0.executeQuery();
+
+    			int lastId = -1;
+
+    			while(queryResult2.next()) {
+    				lastId = queryResult2.getInt(1)+1;
+
+    			}
+
+
+
+    			PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK, IdAuthen, IDFiliereFK) values (?,?,?,?,3,?,2)");
+
+    			System.out.println("Prof Home to pass on greatly detected");
+    			ps.setString(1,FirstNameField.getText());
+    			ps.setString(2,LastNameField.getText());
+    			ps.setString(3,PasswordField.getText());
+    			ps.setString(4,TelephoneField.getText());
+    			ps.setInt(5,lastId);
+    			ps.execute();
+
+    			PreparedStatement ps11= conn.prepareStatement("insert into Professeurs_Filiere (IdProfFK,IDFiliereFK) values (?,2)");  
+    			ps11.setInt(1,lastId);
+    			ps11.execute();//
+    		}
+
+    		}
+
+    		else { System.out.println("filiere Gme Home to pass on greatly detected");
+
+    		if (RoleSelection.getValue().equals("Etudiant")) { 
+    			System.out.println("Student Home to pass on greatly detected");
+    			PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK,IDFiliereFK) values (?,?,?,?,4,3)");
+    			ps.setString(1,FirstNameField.getText());
+    			ps.setString(2,LastNameField.getText());
+    			ps.setString(3,PasswordField.getText());
+    			ps.setString(4,TelephoneField.getText());
+    			ps.execute();
+
+
+
+
+    		}
+
+
+
+    		else if(RoleSelection.getValue().equals("Coordinateur")) {  
+    			PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK,IDFiliereFK) values (?,?,?,?,2,3)");
+    			System.out.println("Coordinateur Home to pass on greatly detected");
+    			ps.setString(1,FirstNameField.getText());
+    			ps.setString(2,LastNameField.getText());
+    			ps.setString(3,PasswordField.getText());
+    			ps.setString(4,TelephoneField.getText());
+    			ps.execute();}
+
+
+    		else {
+    			PreparedStatement ps0= conn.prepareStatement("Select IdAuthen from comptes order by IdAuthen DESC limit 1");
+    			ResultSet queryResult2 = ps0.executeQuery();
+
+    			int lastId = -1;
+
+    			while(queryResult2.next()) {
+    				lastId = queryResult2.getInt(1)+1;
+
+    			}
+
+
+
+
+    			PreparedStatement ps= conn.prepareStatement("insert into comptes (PRENOM, NOM, Pssd, Telephone, IDRoleFK, IdAuthen, IDFiliereFK) values (?,?,?,?,3,?,3)");
+
+    			System.out.println("Prof Home to pass on greatly detected");
+    			ps.setString(1,FirstNameField.getText());
+    			ps.setString(2,LastNameField.getText());
+    			ps.setString(3,PasswordField.getText());
+    			ps.setString(4,TelephoneField.getText());
+    			ps.setInt(5,lastId);
+    			ps.execute();
+
+    			PreparedStatement ps12= conn.prepareStatement("insert into Professeurs_Filiere (IdProfFK,IDFiliereFK) values (?,3)");  
+    			ps12.setInt(1,lastId);
+    			ps12.execute();//
+    		}
+    		}
+
+
+
+    		String query3 = "SELECT Username FROM comptes where NOM= '" + LastNameField.getText() + "' AND PRENOM = '" + FirstNameField.getText()+ "'";
+    		Connection cnx = mysqlconnect.getConnection();
+    		PreparedStatement St3= cnx.prepareStatement(query3) ; 
+    		ResultSet rsl3 = St3.executeQuery();
+
+
+    		while(rsl3.next()){
+
+    			infoBox("You are signed up as '" + rsl3.getString("Username") + "' Successfully", "Success", "Info");
+    			System.out.println("succes inscription");
+
+
+    			Main m = new Main();
+
+    			m.changeScene("Login.fxml");
+
+    			conn.close(); }}
+
+    	catch (Exception e) {
+    		e.printStackTrace();
+
+    		infoBox("Error! Retry (with other parametes preferably)", "Error", "Error Message");
+    	}}
+
+
+		  
 	public void  LogoutSwitchScene() throws IOException {
-		
 		Main signupscene = new Main();
 		signupscene.changeScene("Login.fxml");
-		
 	}
 	
 	

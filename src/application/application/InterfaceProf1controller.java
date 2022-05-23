@@ -28,8 +28,6 @@ public class InterfaceProf1controller {
 		}
 	  
 	  
-	
-	  
 	  public void  Interfaceprof4switchscene() throws IOException {
 			
 			Main prof4 = new Main();    //changer de scence 

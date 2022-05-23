@@ -16,30 +16,30 @@
             <Image url="@../IMAGES/podium-abstract-blue-composition-product-presentation-3d-rendering.jpg" />
          </image>
       </ImageView>
-      <ComboBox layoutX="718.0" layoutY="272.0" prefWidth="150.0" />
-      <ComboBox layoutX="719.0" layoutY="316.0" prefWidth="150.0" />
-      <ComboBox layoutX="719.0" layoutY="368.0" prefWidth="150.0" />
-      <ComboBox layoutX="719.0" layoutY="420.0" prefWidth="150.0" />
-      <ComboBox layoutX="718.0" layoutY="467.0" prefWidth="150.0" />
+      <ComboBox fx:id="filierebox" layoutX="718.0" layoutY="272.0" prefWidth="150.0" />
+      <ComboBox fx:id="semestrebox" layoutX="719.0" layoutY="316.0" prefWidth="150.0" />
+      <ComboBox fx:id="modulebox" layoutX="719.0" layoutY="368.0" prefWidth="150.0" />
+      <ComboBox fx:id="matierebox" layoutX="719.0" layoutY="420.0" prefWidth="150.0" />
+      <ComboBox fx:id="sessionbox" layoutX="718.0" layoutY="467.0" prefWidth="150.0" />
       <Text layoutX="628.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filiere" />
       <Text layoutX="623.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Semestre" />
       <Text layoutX="632.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Module" />
       <Text layoutX="627.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matiere" />
       <Text layoutX="628.0" layoutY="484.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session" />
-      <Button layoutX="605.0" layoutY="546.0" mnemonicParsing="false" text="Valider" />
+      <Button fx:id="validerbutton" layoutX="605.0" layoutY="546.0" mnemonicParsing="false" text="Valider" />
       <Text layoutX="72.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue, professeur!" />
-      <ComboBox layoutX="1100.0" layoutY="81.0" prefWidth="150.0" />
+      <ComboBox fx:id="etudiantbox" layoutX="1100.0" layoutY="81.0" prefWidth="150.0" />
       <Text layoutX="1036.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Etudiant" />
-      <TextField layoutX="1095.0" layoutY="176.0" />
-      <TextField layoutX="1095.0" layoutY="234.0" />
-      <TextField layoutX="1096.0" layoutY="290.0" />
+      <TextField fx:id="notecontrolefield" layoutX="1095.0" layoutY="176.0" />
+      <TextField fx:id="notetpfield" layoutX="1095.0" layoutY="234.0" />
+      <TextField fx:id="noteexamenfield" layoutX="1096.0" layoutY="290.0" />
       <Text layoutX="987.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note Controle" />
       <Text layoutX="1002.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note TP" />
       <Text layoutX="982.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note d'Examen" />
-      <Button layoutX="1189.0" layoutY="411.0" mnemonicParsing="false" text="Modifier" />
-      <Button layoutX="1192.0" layoutY="377.0" mnemonicParsing="false" text="Ajouter" />
+      <Button fx:id="modifierbutton" layoutX="1189.0" layoutY="411.0" mnemonicParsing="false" text="Modifier" />
+      <Button fx:id="ajouterbutton" layoutX="1192.0" layoutY="377.0" mnemonicParsing="false" text="Ajouter" />
       <Button fx:id="afficherlisteetudiantsbutton" layoutX="558.0" layoutY="612.0" mnemonicParsing="false" onAction="#Interfaceprof3switchscene" text="Afficher la liste des etudiants" />
-      <Button layoutX="1073.0" layoutY="446.0" mnemonicParsing="false" text="Afficher les infos de l'etudiant" />
+      <Button fx:id="afficherinfoetudiantbutton" layoutX="1073.0" layoutY="446.0" mnemonicParsing="false" text="Afficher les infos de l'etudiant" />
       <ImageView fitHeight="92.0" fitWidth="66.0" layoutX="31.0" layoutY="625.0" onKeyPressed="#Logout" onMouseClicked="#Logout" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../IMAGES/Logout%20icon.png" />

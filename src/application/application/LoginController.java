@@ -35,6 +35,7 @@ import javafx.scene.input.KeyEvent
 		    @FXML
 		    private PasswordField passwordfield;
 
+		    public static int idcompteconnecte;
 		
 		 
 		@FXML
@@ -70,7 +71,8 @@ import javafx.scene.input.KeyEvent
 				if (queryResult.getInt(1) == 1 ) {
 					labelmessage.setText("Login successful,loading interface..."); 
 					
-			        String extractroleid = "select IDRoleFK from comptes where Username=?"; 
+			        String extractroleid = "select IDRoleFK, IdAuthen from comptes where Username=?"; 
+			      
 			        PreparedStatement  statement2 = connectDB.prepareStatement(extractroleid);
 			     	statement2.setString(1,Usernamefield.getText() );	
 					ResultSet queryResult2 = statement2.executeQuery();
@@ -78,6 +80,9 @@ import javafx.scene.input.KeyEvent
 			
 					
 					while(queryResult2.next()) {
+						
+						idcompteconnecte = queryResult2.getInt(2);
+			
 					 if(queryResult2.getInt(1)==1) {   
 						
 

@@ -9,34 +9,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InterfaceProf2controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InterfaceProf4controller">
    <children>
-      <ImageView fitHeight="844.0" fitWidth="1315.0" layoutX="-17.0" layoutY="-121.0" pickOnBounds="true">
+      <ImageView fx:id="filiereboxx" fitHeight="844.0" fitWidth="1315.0" layoutX="-17.0" layoutY="-121.0" pickOnBounds="true">
          <image>
             <Image url="@../IMAGES/mock-up-rocks-podium-product-presentation-with-cement-background-3d-rendering.jpg" />
          </image>
       </ImageView>
-      <ComboBox layoutX="373.0" layoutY="225.0" prefWidth="150.0" />
-      <ComboBox layoutX="372.0" layoutY="269.0" prefWidth="150.0" />
-      <ComboBox layoutX="371.0" layoutY="316.0" prefWidth="150.0" />
-      <ComboBox layoutX="370.0" layoutY="365.0" prefWidth="150.0" />
-      <ComboBox layoutX="368.0" layoutY="412.0" prefWidth="150.0" />
+      <ComboBox fx:id="filierebox" layoutX="373.0" layoutY="225.0" prefWidth="150.0" />
+      <ComboBox fx:id="semestrebox" layoutX="372.0" layoutY="269.0" prefWidth="150.0" />
+      <ComboBox fx:id="modulebox" layoutX="371.0" layoutY="316.0" prefWidth="150.0" />
+      <ComboBox fx:id="matierebox" layoutX="370.0" layoutY="365.0" prefWidth="150.0" />
+      <ComboBox fx:id="typeseancebox" layoutX="368.0" layoutY="412.0" prefWidth="150.0" />
       <Text layoutX="313.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filiere" />
       <Text layoutX="303.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Semestre" />
       <Text layoutX="310.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Module" />
       <Text layoutX="309.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matiere" />
       <Text layoutX="276.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type Seance" />
-      <Button layoutX="379.0" layoutY="471.0" mnemonicParsing="false" text="Valider" />
+      <Button fx:id="validerbutton" layoutX="379.0" layoutY="471.0" mnemonicParsing="false" text="Valider" />
       <Text layoutX="72.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mark abscences" />
-      <ComboBox layoutX="688.0" layoutY="98.0" prefWidth="150.0" />
+      <ComboBox fx:id="etudiantbox" layoutX="688.0" layoutY="98.0" prefWidth="150.0" />
       <Text layoutX="599.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Etudiant" />
-      <TextField layoutX="716.0" layoutY="158.0" prefHeight="26.0" prefWidth="52.0" />
-      <TextField layoutX="720.0" layoutY="214.0" prefHeight="26.0" prefWidth="60.0" />
+      <TextField fx:id="nombresseancesfield" layoutX="716.0" layoutY="158.0" prefHeight="26.0" prefWidth="52.0" />
+      <TextField fx:id="nombresabscencesfield" layoutX="720.0" layoutY="214.0" prefHeight="26.0" prefWidth="60.0" />
       <Text layoutX="580.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombres Seances" />
       <Text layoutX="578.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombres d'abscences" />
-      <Button layoutX="930.0" layoutY="214.0" mnemonicParsing="false" text="Modifier" />
-      <Button layoutX="798.0" layoutY="215.0" mnemonicParsing="false" text="Ajouter 1 abscence" />
-      <Button layoutX="642.0" layoutY="311.0" mnemonicParsing="false" text="Afficher les infos de l'etudiant" />
+      <Button fx:id="modifierbutton" layoutX="930.0" layoutY="214.0" mnemonicParsing="false" text="Modifier" />
+      <Button fx:id="ajouter1abscencebutton" layoutX="798.0" layoutY="215.0" mnemonicParsing="false" text="Ajouter 1 abscence" />
+      <Button fx:id="afficherinfoetudiantbutton" layoutX="642.0" layoutY="311.0" mnemonicParsing="false" onAction="#Interfaceprof3switchscene" onMouseClicked="#Interfaceprof3switchscene" text="Afficher les infos de l'etudiant" />
       <ImageView fitHeight="92.0" fitWidth="66.0" layoutX="31.0" layoutY="625.0" onKeyPressed="#Logout" onMouseClicked="#Logout" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../IMAGES/Logout%20icon.png" />

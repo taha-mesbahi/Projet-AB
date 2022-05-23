@@ -2,8 +2,14 @@ package application;
 
 public class Filiere {
 	
-	private Long idFiliere;
+	private int idFiliere;
 	private String name;
+	public Filiere(int idFiliere, String name) {
+		super();
+		this.idFiliere = idFiliere;
+		this.name = name;
+	}
+	
 	
 
 }
