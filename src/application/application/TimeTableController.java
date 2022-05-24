@@ -1,6 +1,9 @@
 package application;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
+import java.net.URLConnection;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ResourceBundle;
@@ -21,13 +24,26 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-public class TimeTableController implements Initializable {
 
+
+
+
+public class TimeTableController implements Initializable {
+	
+	
+	
+
+
+
+		
+	
+	
+	
 
     private CalendarView calendar;
 
     @FXML
-    private GridPane pnlHost;
+    private GridPane grid;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -35,27 +51,30 @@ public class TimeTableController implements Initializable {
     }
 
     private void loadCalendar() {
-        calendar = new CalendarView();
+       calendar = new CalendarView();
 
         Calendar CM = new Calendar("CM");
         Calendar TD = new Calendar("TD");
         Calendar TP = new Calendar("TP");
-
+        Calendar Exam = new Calendar("Exam");
         CM.setStyle(Calendar.Style.STYLE7);
         TD.setStyle(Calendar.Style.STYLE2);
         TP.setStyle(Calendar.Style.STYLE3);
+        Exam.setStyle(Calendar.Style.STYLE5);
         
         
-        
-        Entry entry = new Entry("POO");
+        Entry entry = new Entry("Soutenance Achraf Berrajaa Projet");
         Interval interval = new Interval( );
         entry.setInterval(interval);
-        entry.setRecurrenceRule("RRULE:FREQ=DAILY;");
+    //  entry.setRecurrenceRule("RRULE:FREQ=DAILY;");
         
         CM.addEntry(entry);
-
-        CalendarSource myCalendarSource = new CalendarSource("Timetable");
-        myCalendarSource.getCalendars().addAll(CM, TD,TP);
+        //
+       
+      
+        //
+        CalendarSource myCalendarSource = new CalendarSource("Emploi de temps"); // set title 
+        myCalendarSource.getCalendars().addAll(CM, TD,TP,Exam);
 
         calendar.getCalendarSources().addAll(myCalendarSource);
 
@@ -72,8 +91,8 @@ public class TimeTableController implements Initializable {
                     });
 
                     try {
-                        // update every 10 seconds
-                        sleep(10000);
+                        // update every 5 seconds
+                        sleep(5000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -87,8 +106,8 @@ public class TimeTableController implements Initializable {
         updateTimeThread.setDaemon(true);
         updateTimeThread.start();
 
-        calendar.showMonthPage();
-        pnlHost.getChildren().add(calendar);
+        calendar.showWeekPage();
+        grid.getChildren().add(calendar);
     }
 
 	
