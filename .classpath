@@ -21,5 +21,20 @@
 	<classpathentry kind="lib" path="/Users/macbook/Downloads/javafx-sdk-18/lib/javafx.web.jar"/>
 	<classpathentry kind="lib" path="/Users/macbook/Downloads/mysql-connector-java-8.0-2.28/mysql-connector-java-8.0.28.jar"/>
 	<classpathentry kind="lib" path="/Users/macbook/eclipse-workspace/Projet AB/src/application/IMAGES/itextpdf-5.5.9 (1).jar"/>
+	<classpathentry kind="lib" path="/Users/macbook/Downloads/view-11.10.6.jar"/>
+	<classpathentry kind="lib" path="/Users/macbook/Downloads/javafx-controls-17.0.2.jar"/>
+	<classpathentry kind="lib" path="/Users/macbook/Downloads/controlsfx-11.1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/macbook/Downloads/ikonli-core-12.3.1.jar"/>
+	<classpathentry kind="lib" path="/Users/macbook/Downloads/ikonli-javafx-12.3.1.jar"/>
+	<classpathentry kind="lib" path="/Users/macbook/Downloads/ikonli-fontawesome-pack-12.3.1.jar"/>
+	<classpathentry kind="lib" path="/Users/macbook/Downloads/jar_files-2/activation-1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/macbook/Downloads/jar_files-2/commons-codec-1.15.jar"/>
+	<classpathentry kind="lib" path="/Users/macbook/Downloads/jar_files-2/commons-collections4-4.4.jar"/>
+	<classpathentry kind="lib" path="/Users/macbook/Downloads/jar_files-2/commons-lang3-3.12.0.jar"/>
+	<classpathentry kind="lib" path="/Users/macbook/Downloads/jar_files-2/ical4j-4.0.0-alpha12.jar"/>
+	<classpathentry kind="lib" path="/Users/macbook/Downloads/jar_files-2/javax.mail-1.6.2.jar"/>
+	<classpathentry kind="lib" path="/Users/macbook/Downloads/jar_files-2/jool-java-8-0.9.14.jar"/>
+	<classpathentry kind="lib" path="/Users/macbook/Downloads/jar_files-2/slf4j-api-1.7.36.jar"/>
+	<classpathentry kind="lib" path="/Users/macbook/Downloads/jar_files-2/threeten-extra-1.7.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

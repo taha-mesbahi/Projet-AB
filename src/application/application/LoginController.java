@@ -88,7 +88,7 @@ import javafx.scene.input.KeyEvent
 
 						Main m = new Main();
 
-						m.changeScene("AfterLoginAdmin.fxml");
+						m.changeScene("Timetable.fxml");
 						System.out.println("admin interface accessed");
 
 					} else if (queryResult2.getInt(1)==2) {
