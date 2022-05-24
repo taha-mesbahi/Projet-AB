@@ -91,7 +91,7 @@ public class afterloginakram implements Initializable {
 		   Connection conn = mysqlconnect.getConnection();
 		
 		   try { 
-			   PreparedStatement ps= conn.prepareStatement("insert into users (user_id, username, password, email) values (?,?,?,?)");
+			   PreparedStatement ps= conn.prepareStatement("insert into comptes (idAuthen, username, pssd, email) values (?,?,?,?)");
 			   ps.setString(1,txt_id.getText());
 			   ps.setString(2,txt_username.getText());
 			   ps.setString(3,txt_password.getText());
@@ -101,8 +101,8 @@ public class afterloginakram implements Initializable {
 
 			   System.out.println("executee2");
 
-               conn.close();
-               this.ajout();
+			   update_table();
+	            search_user();
 	    }catch(Exception e) {
 			   JOptionPane.showMessageDialog(null, e);
 				  System.out.println("errreur");
@@ -124,7 +124,7 @@ public class afterloginakram implements Initializable {
 	   }
 	   
 	   public void Edit() {
-		   data.clear();
+		  
 		   try {
 			   Connection conn = mysqlconnect.getConnection();
 			   String value1 = txt_id.getText();
@@ -136,11 +136,10 @@ public class afterloginakram implements Initializable {
 			   String sql = "update comptes set idAuthen= '"+value1+"',Username= '"+value2+"',pssd= '"+value3+"',email= '"+value4+"'  where idAuthen = '"+value1+"'";
 			   PreparedStatement ps= conn.prepareStatement(sql);
 			   ps.execute();
-			   System.out.println("executee2");
-
-                conn.close();
-                this.ajout();
-			   
+			   System.out.println("executee");
+			   JOptionPane.showMessageDialog(null, "Update");
+	            update_table();
+	            search_user();
 		   } catch(Exception e) {
 			   JOptionPane.showMessageDialog(null, e);
 			  System.out.println("errreur");
@@ -149,7 +148,7 @@ public class afterloginakram implements Initializable {
 		   
 	   }
 	   public void Delete() {
-		   data.clear();
+
 		   try {
 		   Connection conn =mysqlconnect.getConnection();
 		   String sql = "DELETE FROM comptes WHERE idAuthen=?";
@@ -158,8 +157,8 @@ public class afterloginakram implements Initializable {
 			   ps.setString(1, txt_id.getText());
 			   ps.execute();
 			   System.out.println("executee2");
-			   conn.close();
-			   this.ajout();
+			   update_table();
+	            search_user();
 		   } catch(Exception e) {
 			   JOptionPane.showMessageDialog(null, e);
 			   System.out.println("errreur");
@@ -170,7 +169,7 @@ public class afterloginakram implements Initializable {
 	   	 
 	   
 	  	@FXML
-		public void ajout() {   //actualiser to change nam e
+		public void update_table() {   //actualiser to change name
 			data.clear();
 
 			try {
@@ -179,7 +178,7 @@ public class afterloginakram implements Initializable {
 				PreparedStatement stat = conn.prepareStatement(sql);
 				ResultSet rs = stat.executeQuery();
 				while (rs.next()) {    
-					data.add(new users(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4)));
+					data.add(new users(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(6)));
 					
 			}
 				conn.close();
@@ -200,7 +199,7 @@ public class afterloginakram implements Initializable {
 	  	
 	  	
 	  	@FXML
-	    void search_user() {           // filtration de la recherche tableau selon username, password, mail
+	    public void search_user() {           // filtration de la recherche tableau selon username, password, mail
 	  		id.setCellValueFactory(new PropertyValueFactory<users, Integer>("id"));
 			username.setCellValueFactory(new PropertyValueFactory<users, String>("username"));
 			password.setCellValueFactory(new PropertyValueFactory<users, String>("password"));
@@ -238,9 +237,11 @@ public class afterloginakram implements Initializable {
 	    }
 	  	
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		this.ajout();
-		
+	public void initialize(URL url, ResourceBundle rb) {
+		this.update_table();
+		this.search_user();
+	     
+
 	
 	}
 }

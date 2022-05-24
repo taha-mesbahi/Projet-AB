@@ -33,7 +33,7 @@
       <Button layoutX="332.0" layoutY="600.0" mnemonicParsing="false" onAction="#insert" text="Add" />
       <Button layoutX="433.0" layoutY="601.0" mnemonicParsing="false" onAction="#Edit" text="Edit" />
       <Button layoutX="536.0" layoutY="601.0" mnemonicParsing="false" onAction="#Delete" text="Delete" />
-      <Button layoutX="135.0" layoutY="392.0" mnemonicParsing="false" onAction="#ajout" text="actualiser" />
+      <Button layoutX="135.0" layoutY="392.0" mnemonicParsing="false" onAction="#update_table" text="actualiser" />
       <ImageView fitHeight="81.0" fitWidth="95.0" layoutX="37.0" layoutY="585.0" onMouseClicked="#userlogout" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../IMAGES/Logout%20icon.png" />

@@ -27,9 +27,11 @@ public class mysqlconnect {
 		try  {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			databaseLink=DriverManager.getConnection(url,databaseUser,databasePassword);
+			return databaseLink;
 		} catch (Exception e) {
 			e.printStackTrace();} 
-		return databaseLink;}
+		System.out.println("eerrrrrreur sql connnect");
+		return null;}
 
 
 // what would the following lines be? 
@@ -46,7 +48,7 @@ public static ObservableList<users> getDatausers() {
 	while ( rs.next() ) {
 		
 		
-		list.add(new users(Integer.parseInt(rs.getString("user_id")), rs.getString("username"), rs.getString("password"), rs.getString("email")));
+		list.add(new users(Integer.parseInt(rs.getString("idAuthen")), rs.getString("username"), rs.getString("pssd"), rs.getString("email")));
 	}
 
 	}
