@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InterfaceAdmin1controller">
+   <children>
+      <ImageView fitHeight="950.0" fitWidth="1323.0" layoutX="-25.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../IMAGES/technology-devices-minimal-display-podium-2.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="116.0" fitWidth="132.0" layoutX="32.0" layoutY="596.0" onMouseClicked="#Logout" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../IMAGES/Logout%20icon.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="564.0" layoutY="185.0" mnemonicParsing="false" onAction="#InterfaceTimetableswitchscene" text="Print TimeTable" />
+      <Button layoutX="552.0" layoutY="273.0" mnemonicParsing="false" onAction="#InterfaceAdmin" text="Show Accounts Info" />
+      <Text fill="WHITE" layoutX="73.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Admin!" wrappingWidth="194.78634643554688">
+         <font>
+            <Font name="Avenir Next Bold" size="23.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

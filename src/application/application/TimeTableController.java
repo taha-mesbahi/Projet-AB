@@ -25,21 +25,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-
-
-
 public class TimeTableController implements Initializable {
 	
-	
-	
-
-
-
-		
-	
-	
-	
-
     private CalendarView calendar;
 
     @FXML
@@ -101,17 +88,21 @@ public class TimeTableController implements Initializable {
             }
         };
 
-
         updateTimeThread.setPriority(Thread.MIN_PRIORITY);
         updateTimeThread.setDaemon(true);
         updateTimeThread.start();
-
         calendar.showWeekPage();
         grid.getChildren().add(calendar);
     }
 
 	
+    public void  Logout() throws IOException {
+		
+		Main logout = new Main();
+		logout.changeScene("Login.fxml");
 
+		
+	}
 
    
   

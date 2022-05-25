@@ -279,7 +279,21 @@ public class InterfaceProf4controller implements Initializable {
 	 				System.out.println("IdMatiereEXTRACTED");
 
 	 			}
-	 		
+	 			
+	 			String query14 = "Select NombreAbscences from Abscences where idEtudiantFK="+idEtudiant+"";
+	 	        
+	 	          
+	 			PreparedStatement St14= cnx.prepareStatement(query14) ; 
+
+	 			ResultSet rsl14 = St14.executeQuery();
+	 			int NombreAbscences = 0;
+
+	 			while(rsl14.next()) {
+	 				NombreAbscences= rsl14.getInt("NombreAbscences");
+	 				System.out.println("Nbr abscences extracted successfuly");
+
+	 			}
+	 		nombresabscencesfield.setText(String.valueOf(NombreAbscences));
 		  
 
 		  PreparedStatement ps= cnx.prepareStatement("insert into Abscences (idEtudiantFK, idMatiereFK, idSemestreFK, idTypeSeanceFK, NombreAbscences) values (?,?,?,?,?)");

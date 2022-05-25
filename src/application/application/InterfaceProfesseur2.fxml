@@ -39,7 +39,7 @@
       <Button fx:id="exportpdfbutton" layoutX="1124.0" layoutY="503.0" mnemonicParsing="false" onAction="#exportData" text="ExportPDF" />
       <Button fx:id="ajouterbutton" layoutX="1192.0" layoutY="377.0" mnemonicParsing="false" onAction="#AddNote" text="Ajouter" />
       <Button fx:id="afficherlisteetudiantsbutton" layoutX="558.0" layoutY="612.0" mnemonicParsing="false" onAction="#Interfaceprof3switchscene" text="Afficher la liste des etudiants" />
-      <Button fx:id="afficherinfoetudiantbutton" layoutX="1073.0" layoutY="446.0" mnemonicParsing="false" text="Afficher les infos de l'etudiant" />
+      <Button fx:id="afficherinfoetudiantbutton" layoutX="1073.0" layoutY="446.0" mnemonicParsing="false" onAction="#Interfaceprof3switchscene" text="Afficher les infos de l'etudiant" />
       <ImageView fitHeight="92.0" fitWidth="66.0" layoutX="31.0" layoutY="625.0" onKeyPressed="#Logout" onMouseClicked="#Logout" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../IMAGES/Logout%20icon.png" />

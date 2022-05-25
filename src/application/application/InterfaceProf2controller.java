@@ -92,7 +92,8 @@ public class InterfaceProf2controller implements Initializable {
 
     @FXML
     private Button validerbutton;
-    
+    public static int idetudianthighlighted;
+	
     
 	@Override
     public void initialize(URL arg0, ResourceBundle arg1) {  //responsible for filling combobox
@@ -221,10 +222,10 @@ public class InterfaceProf2controller implements Initializable {
            			while(rsl9.next()) {
            				etudiants.add( rsl9.getString("NomComplet"));
            				System.out.println("IdEtudiant"+idEtudiants+"");
-
+   
            			}
         			
-           			
+           		   
            			
            			
         			
@@ -322,7 +323,8 @@ public class InterfaceProf2controller implements Initializable {
 
  	 			}
  	 		
-		  
+ 	 			
+       			
 
 		  PreparedStatement ps= cnx.prepareStatement("insert into NotesEtudiants (idcompteEtudiant, SemestreId, SessionId, idMatiere, NoteCC, NoteTP, NoteExamen) values (?,?,?,?,?,?,?)");
 		    ps.setInt(1, idEtudiant);
@@ -344,6 +346,8 @@ public class InterfaceProf2controller implements Initializable {
 
 			
 		}
+	 
+	  
 
 	  private static String FILE = "/Users/macbook/Downloads/test.pdf";
 	    private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,

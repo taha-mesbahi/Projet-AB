@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -24,5 +25,13 @@
          </rowConstraints>
       </GridPane>
       <Text fill="WHITE" layoutX="35.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hey! Make a printable timetable here!" />
+      <ImageView fitHeight="113.0" fitWidth="99.0" layoutX="14.0" layoutY="795.0" onMouseClicked="#Logout" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../IMAGES/Logout%20icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </AnchorPane>

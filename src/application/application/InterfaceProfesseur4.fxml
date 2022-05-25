@@ -30,12 +30,9 @@
       <Text layoutX="72.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mark abscences" />
       <ComboBox fx:id="etudiantbox" layoutX="688.0" layoutY="98.0" prefWidth="150.0" />
       <Text layoutX="599.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Etudiant" />
-      <TextField fx:id="nombresseancesfield" layoutX="716.0" layoutY="158.0" prefHeight="26.0" prefWidth="52.0" />
       <TextField fx:id="nombresabscencesfield" layoutX="720.0" layoutY="214.0" prefHeight="26.0" prefWidth="60.0" />
-      <Text layoutX="580.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombres Seances" />
       <Text layoutX="578.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombres d'abscences" />
-      <Button fx:id="modifierbutton" layoutX="930.0" layoutY="214.0" mnemonicParsing="false" text="Modifier" />
-      <Button fx:id="ajouter1abscencebutton" layoutX="798.0" layoutY="215.0" mnemonicParsing="false" onAction="#Add1Abscence" text="Ajouter abscence" />
+      <Button fx:id="ajouter1abscencebutton" layoutX="798.0" layoutY="215.0" mnemonicParsing="false" onAction="#Add1Abscence" text="Actualiser abscence" />
       <Button fx:id="afficherinfoetudiantbutton" layoutX="642.0" layoutY="311.0" mnemonicParsing="false" onAction="#Interfaceprof3switchscene" onMouseClicked="#Interfaceprof3switchscene" text="Afficher les infos de l'etudiant" />
       <ImageView fitHeight="92.0" fitWidth="66.0" layoutX="31.0" layoutY="625.0" onKeyPressed="#Logout" onMouseClicked="#Logout" pickOnBounds="true" preserveRatio="true">
          <image>

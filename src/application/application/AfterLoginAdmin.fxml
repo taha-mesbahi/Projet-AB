@@ -19,10 +19,10 @@
       </ImageView>
       <TableView fx:id="table_users" layoutX="325.0" layoutY="232.0" onMouseClicked="#getSelected" opacity="0.84" prefHeight="329.0" prefWidth="651.0">
         <columns>
-          <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
-            <TableColumn fx:id="username" prefWidth="75.0" text="Username" />
+          <TableColumn fx:id="id" prefWidth="42.0" text="Id" />
+            <TableColumn fx:id="username" prefWidth="108.0" text="Username" />
             <TableColumn fx:id="password" prefWidth="75.0" text="Password" />
-            <TableColumn fx:id="email" prefWidth="75.0" text="Email" />
+            <TableColumn fx:id="email" prefWidth="327.0" text="Email" />
         </columns>
       </TableView>
       <TextField fx:id="filterField" layoutX="421.0" layoutY="88.0" onAction="#search_user" promptText="Search" />
